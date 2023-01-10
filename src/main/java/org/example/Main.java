@@ -1,45 +1,33 @@
 package org.example;
-import java.lang.Math;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Random;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        try {
+    public static void main(String[] args) throws IOException {
 
+    File file = new File("src/main/test.txt");
+    try{
+        FileWriter writer = new FileWriter("home.txt", true);
+        writer.write("Hello world!");
+        writer.close();
 
-            System.out.println("Enter a number");
-            int x = scanner.nextInt();
-
-            System.out.println("Enter a number to div");
-            int y = scanner.nextInt();
-
-
-            int z = x/y;
-
-            System.out.println("result " + z);
-        }
-        catch (ArithmeticException e){
-            System.out.println("Dont divide through 0");
-        }
-        catch(InputMismatchException e){
-            System.out.println("Please enter a number");
-        }
-        catch(Exception e){
-            System.out.println("There went smth wrong");
-        }
-        finally {
-            System.out.println("This will always print");
-            scanner.close();
-        }
+    }
+    catch (IOException e){
+        System.out.println("went wrong");
+    }
 
 
 
+    if(file.exists()){
+        System.out.println("That file exists");
+        System.out.println(file.getAbsolutePath());
+    } else {
+        System.out.println("that file doesnt exist");
+
+
+    }
 
 
     }
